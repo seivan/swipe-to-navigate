@@ -7,4 +7,6 @@ src/**
 **/tslint.json
 **/*.map
 **/*.ts
-*.png
+resources/*.png
+resources/*.pxm
+
