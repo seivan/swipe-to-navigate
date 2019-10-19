@@ -1,0 +1,80 @@
+{
+    "name": "swipe-to-navigate",
+    "displayName": "Swipe To Navigate",
+    "description": "Three finger swipe with options for VSCode actions, like Xcode",
+    "version": "0.1.0",
+    "publisher": "seivan",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/seivan/swipe-to-navigate"
+    },
+    "engines": {
+        "vscode": "^1.39.0"
+    },
+    "categories": [
+        "Keymaps",
+        "Other"
+    ],
+    "keywords": [
+        "swipe",
+        "navigation",
+        "xcode",
+        "touch",
+        "touchpad"
+    ],
+    "qna": "https://github.com/seivan/swipe-to-navigate/issues",
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "configuration": {
+            "type": "object",
+            "title": "Swipe To Navigate",
+            "properties": {
+                "swipeToNavigate.action": {
+                    "type": "string",
+                    "default": "tabs",
+                    "description": "Control what a three finger swipe will navigate between.",
+                    "enum": [
+                        "disabled",
+                        "tabs",
+                        "grouped-tabs",
+                        "recent-code",
+                        "recent-files"
+                    ],
+                    "enumDescriptions": [
+                        "Swipes are disabled.",
+                        "Swipes navigate between opened tabs.",
+                        "Swipes navigate between opened tabs in current group.",
+                        "Swipes navigate between recent code and files - like Xcode.",
+                        "Swipes navigate between recent files."
+                    ]
+                }
+            }
+        }
+    },
+    "extensionDependencies": [
+        "iocave.monkey-patch"
+    ],
+    "scripts": {
+        "vscode:prepublish": "yarn run compile",
+        "package": "yarn run compile && yarn run vsce package",
+        "compile": "yarn tsc -p ./",
+        "watch": "yarn run tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "yarn run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^3.6.4",
+        "vscode": "^1.1.36",
+        "vsce": "^1.68.0",
+        "@types/node": "^12.11.1",
+        "@types/mocha": "^5.2.7"
+    },
+    "__metadata": {
+        "id": "ac44dd75-bdb7-433b-9d86-23f9f070c07a",
+        "publisherDisplayName": "seivan",
+        "publisherId": "23f4e00e-db63-40fd-9f68-245f064ca7f5"
+    }
+}
