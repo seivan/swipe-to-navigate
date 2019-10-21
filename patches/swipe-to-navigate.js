@@ -27,22 +27,22 @@ define([
     }
     let defaultConfig = { 'action': 'tabs' };
 
-    function registerSwipe(command, config, window) {
-
+    function registerSwipe(event, config, window) {
+        logger(window, "Registered Swipe Listener!");
         let action = availableActions[config.action]
             .map(function (action) { return 'workbench.action.' + action; })
             .map(function (action) { return { id: action } })
             .reduce(function (_pv, _cv, _idx, actions) { return { back: actions[0], forward: actions[1] }; });
 
-        window._win.addListener(command.event, function (_event, commandType) {
-            switch (commandType) {
-                case command.back:
-                    window.sendWhenReady('vscode:runAction', action.back);
-                    break;
-                case command.forward:
-                    window.sendWhenReady('vscode:runAction', action.forward);
-                    break;
-            }
+        let commandMappedAction = {
+            left: action.back,
+            right: action.forward,
+            'browser-backward': action.back,
+            'browser-forward': action.forward
+
+        };
+        window._win.addListener(event, function (_event, command) {
+            window.sendWhenReady('vscode:runAction', commandMappedAction[command]);
         });
     }
 
@@ -61,29 +61,21 @@ define([
 
         let config = window.configurationService.getValue("swipeToNavigate");
 
-        let command = { event: null, back: null, forward: null };
+        let event = null;
 
-        if (isMacOS) {
-            command.event = "swipe";
-            command.back = "left";
-            command.forward = "right";
-        }
-        else {
-            command.event = "app-command";
-            command.back = "browser-backward";
-            command.forward = "browser-forward";
-        }
+        if (isMacOS) { event = "swipe"; }
+        else { event = "app-command"; }
 
-        window._win.removeAllListeners(command.event);
+        window._win.removeAllListeners(event);
 
         if (config == null) { config = defaultConfig; }
-        if (config.action !== 'disabled') { registerSwipe(command, config, window); }
+        if (config.action !== 'disabled') { registerSwipe(event, config, window); }
 
 
         return resultOnConfigurationUpdated;
     });
 
-    return resultOpenFirstWindow;
+
 
 });
 
