@@ -7,15 +7,8 @@ define([
 
 
     function logger(mainWindow, s) {
-        // if (_debug === true) {
         console.log(s);
-        // let b = s;
-        // mainWindow._win.webContents.executeJavaScript(`console.dir("${Object.keys(s)}")`);
         mainWindow._win.webContents.executeJavaScript(`console.log("${s}")`);
-        // mainWindow._win.webContents.executeJavaScript(`console.dir("${Object.keys(s)}")`);
-        // mainWindow._win.webContents.executeJavaScript(`console.dir("${JSON.parse(JSON.stringify(s))}")`);
-        // }
-        // }
     }
 
     let availableActions = {
@@ -24,7 +17,8 @@ define([
         'recent-code': ['navigateBack', 'navigateForward'],
         'recent-files': ['openPreviousRecentlyUsedEditor', 'openNextRecentlyUsedEditor'],
 
-    }
+    };
+
     let defaultConfig = { 'action': 'tabs' };
 
     function registerSwipe(event, config, window) {
@@ -57,18 +51,18 @@ define([
     let isMacOS = platform.isMacintosh;
 
 
-    utils.override(win.CodeWindow, "onConfigurationUpdated", function (onConfigurationUpdated) {
+    utils.override(win.CodeWindow, 'onConfigurationUpdated', function (onConfigurationUpdated) {
 
         let resultOnConfigurationUpdated = onConfigurationUpdated();
 
         let window = this;
 
-        let config = window.configurationService.getValue("swipeToNavigate");
+        let config = window.configurationService.getValue('swipeToNavigate');
 
         let event = null;
 
-        if (isMacOS) { event = "swipe"; }
-        else { event = "app-command"; }
+        if (isMacOS) { event = 'swipe'; }
+        else { event = 'app-command'; }
 
         window._win.removeAllListeners(event);
 
