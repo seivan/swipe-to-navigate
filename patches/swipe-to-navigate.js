@@ -41,8 +41,12 @@ define([
             'browser-forward': action.forward
 
         };
-        window._win.addListener(event, function (_event, command) {
-            window.sendWhenReady('vscode:runAction', commandMappedAction[command]);
+        window._win.addListener(event, function (_, command) {
+            let selectedAction = commandMappedAction[command];
+            if (selectedAction != null) {
+                window.sendWhenReady('vscode:runAction', selectedAction);
+            }
+
         });
     }
 
