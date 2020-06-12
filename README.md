@@ -14,6 +14,8 @@
 * ### `macOS`
 
     * Navigate using three finger swipes on the touchpad in a similar fashion to Xcode.
+    * ![macOS trackpad Settings](resources/settings.png)
+
 
 * ### `Windows` & `Linux`
     * Navigate using keyboard media keys or browser commands, as well as the "Back" button built into some mice on Windows.
