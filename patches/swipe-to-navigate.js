@@ -38,7 +38,7 @@ define([
         window._win.addListener(event, function (_, command) {
             let selectedAction = commandMappedAction[command];
             if (selectedAction != null) {
-                window.sendWhenReady('vscode:runAction', selectedAction);
+                window.sendWhenReady('vscode:runAction', null, selectedAction);
             }
 
         });
