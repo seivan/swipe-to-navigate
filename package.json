@@ -2,7 +2,7 @@
     "name": "swipe-to-navigate",
     "displayName": "Swipe To Navigate",
     "description": "VSCode Extension for adding three finger swipe with various options similar to Xcode.",
-    "version": "1.0.5",
+    "version": "1.1.0",
     "publisher": "seivan",
     "repository": {
         "type": "git",
@@ -10,7 +10,7 @@
     },
     "icon": "resources/icon.png",
     "engines": {
-        "vscode": "1.46.0"
+        "vscode": "^1.52.0"
     },
     "categories": [
         "Keymaps",
@@ -67,10 +67,10 @@
         "test": "yarn run compile && node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "@types/mocha": "8.0.4",
-        "@types/vscode": "1.46.0",
-        "typescript": "4.1.2",
-        "vsce": "1.81.1",
-        "vscode-test": "1.4.1"
+        "@types/mocha": "8.2.1",
+        "@types/vscode": "1.53.0",
+        "typescript": "4.1.5",
+        "vsce": "1.85.0",
+        "vscode-test": "1.5.1"
     }
 }
