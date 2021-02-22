@@ -2,7 +2,7 @@
     "name": "swipe-to-navigate",
     "displayName": "Swipe To Navigate",
     "description": "VSCode Extension for adding three finger swipe with various options similar to Xcode.",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "publisher": "seivan",
     "repository": {
         "type": "git",
