@@ -1,5 +1,5 @@
 define([
-    "vs/code/electron-main/window",
+    "vs/platform/windows/electron-main/window",
     "vs/base/common/platform",
     "swipe-to-navigate/utils"
 ], function (win, platform, utils) {
