@@ -23,10 +23,14 @@ define([
 
     function registerSwipe(event, config, window) {
         logger(window, "Registered Swipe Listener!");
-        let action = availableActions[config.action]
-            .map(function (action) { return 'workbench.action.' + action; })
-            .map(function (action) { return { id: action } })
-            .reduce(function (_pv, _cv, _idx, actions) { return { back: actions[0], forward: actions[1] }; });
+
+        // when reverse = true: swipe from left to right to go back;
+        let direction = config.directionReverse ? 1 : 0;
+
+        // change to avoid unnecessary loop
+        let actions = availableActions[config.action]
+            .map(function (action) { return { id: 'workbench.action.' + action } })
+        let action = { back: actions[direction], forward: actions[1 - direction] }
 
         let commandMappedAction = {
             left: action.back,
@@ -76,4 +80,3 @@ define([
 
 
 });
-

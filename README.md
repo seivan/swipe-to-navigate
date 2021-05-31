@@ -25,12 +25,15 @@
 ```jsonc
 "swipeToNavigate.action": "disabled" | "tabs" |  "grouped-tabs" | "recent-code" | "recent-files"
 ```
-
+```jsonc
+"swipeToNavigate.directionReverse": true | false
+```
 ### Examples:
 
 * Currently opened *tabs* - **default**.
 ```jsonc
 "swipeToNavigate.action": "tabs"
+"swipeToNavigate.directionReverse": false
 ```
 
 * Currently opened *tabs* in a single *group*.
