@@ -2,7 +2,7 @@
     "name": "swipe-to-navigate",
     "displayName": "Swipe To Navigate",
     "description": "VSCode Extension for adding three finger swipe with various options similar to Xcode.",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "publisher": "seivan",
     "repository": {
         "type": "git",
@@ -51,6 +51,11 @@
                         "Swipes navigate between recent code and files - like Xcode.",
                         "Swipes navigate between recent files."
                     ]
+                },
+                "swipeToNavigate.directionReverse": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Controls whether swipe right goes forward or backward. Default is going forward."
                 }
             }
         }
